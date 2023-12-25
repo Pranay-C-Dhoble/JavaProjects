@@ -1,8 +1,9 @@
 package bird_count_system;
 import java.util.Scanner;
-
+import bird_count_system.BirdWatcher;
 
 public class BirdCountSystemApp {
+    static int[] birds =new int[] { 1, 2, 3, 4, 5, 6, 7 };
     public static void main(String[] args) {
         System.out.println("----------------Welcome to Bird Count System----------------");
         while (true) {
@@ -13,17 +14,12 @@ public class BirdCountSystemApp {
 
             //Splitting the string into an array of strings
             args = action.split(" ");
-//            if (args.length < 2) {
-//                System.out.println("Usage: java BirdCountSystem -action [getLastWeek|getToday|incrementTodaysCount|hasDayWithoutBirds|getCountForFirstDays|getBusyDays]");
-//                return;
-//            }
-            //change string[] into int[] and skip the first element
-//            int[] birds = new int[args.length - 1];
-//            for(int i = 0; i < birds.length; i++) {
-//                birds[i] = Integer.parseInt(args[i + 1]);
-//            }
-            BirdWatcher birdWatcher = new BirdWatcher(new int[] { 1, 2, 3, 4, 5, 6, 7 });
 
+            BirdWatcher birdWatcher = new BirdWatcher(birds);
+            if (args.length < 1) {
+                System.out.println("Usage: java BirdCountSystem -action [getLastWeek|getToday|incrementTodaysCount|hasDayWithoutBirds|getCountForFirstDays|getBusyDays]");
+                return;
+            }
             switch (args[0]) {
                 case "getLastWeek":
                     BirdWatcher.getLastWeek();
@@ -43,19 +39,15 @@ public class BirdCountSystemApp {
                 case "getBusyDays":
                     BirdWatcher.getBusyDays();
                     break;
+                case "exit":
+                    System.out.println("--------------------------------Exiting the application----------------------------------");
+                    System.out.println("--------------------------Thank you for using the application----------------------------");
+                    return;
                 default:
                     System.out.println("Invalid action");
-                    break;
+                    return;
             }
 
         }
-//        BirdWatcher birdWatcher = new BirdWatcher(new int[] { 1, 2, 3, 4, 5, 6, 7 });
-//        System.out.println("Birds last week: " + birdWatcher.getLastWeek());
-//        System.out.println("Birds today: " + birdWatcher.getToday());
-//        birdWatcher.incrementTodaysCount();
-//        System.out.println("Birds today: " + birdWatcher.getToday());
-//        System.out.println("Has day without birds: " + birdWatcher.hasDayWithoutBirds());
-//        System.out.println("Count for first 3 days: " + birdWatcher.getCountForFirstDays(3));
-//        System.out.println("Busy days: " + birdWatcher.getBusyDays());
     }
 }
