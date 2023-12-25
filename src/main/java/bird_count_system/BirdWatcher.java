@@ -25,9 +25,11 @@ public class BirdWatcher {
         }
     }
     public static void incrementTodaysCount() {
-        birdsPerDay[birdsPerDay.length - 1]++; // another way to do
+
+        BirdCountSystemApp.birds[birdsPerDay.length - 1]= ++birdsPerDay[birdsPerDay.length - 1]; // another way to do
         // birdsPerDay[birdsPerDay.length - 1] = birdsPerDay[birdsPerDay.length - 1] + 1;
-        System.out.println(birdsPerDay[birdsPerDay.length - 1]);
+
+        System.out.println(BirdCountSystemApp.birds[birdsPerDay.length - 1]);
     }
     public static void hasDayWithoutBirds() {
         for(int i = 0; i < birdsPerDay.length; i++) {
